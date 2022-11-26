@@ -1,0 +1,23 @@
+.popup__text {
+  box-sizing: border-box;
+  display: block;
+  width: 100%;
+  height: 27px;
+  margin-bottom: 30px;
+  border: none;
+  padding: 0;
+  font-size: 14px;
+  line-height: 16.94px;
+  font-weight: 400;
+  border-bottom: 1px solid #000000;
+}
+
+.popup__text:last-of-type {
+  margin-bottom: 48px;
+}
+
+@media screen and (max-width:320px) {
+  .popup__text:last-of-type {
+    margin-bottom: 45px;
+  }
+}
