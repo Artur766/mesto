@@ -17,59 +17,59 @@
     <main>
       <section class="profile">
         <div class="profile__wrapper">
-          <img class="profile__avatar" src="./images/jak-iv-kusto.jpg" alt="аватарка Жак-Ив Кусто">
+          <img class="profile__avatar" src="./images/jak-iv-kusto.jpg" alt="аватарка">
           <div class="profile__info">
             <h1 class="profile__name">Жак-Ив Кусто</h1>
-            <button class="profile__edit-btn"></button>
+            <button class="profile__edit-btn" type="button"></button>
             <p class="profile__job">Исследователь океана</p>
           </div>
         </div>
-        <button class="profile__add-btn"></button>
+        <button class="profile__add-btn" type="button"></button>
       </section>
       <section class="elements">
-        <div class="element">
+        <article class="element">
           <img class="element__photo" src="./images/karachaevsk.jpg" alt="Карачаевский лес, в котором виднеется здание">
           <div class="element__wrapper">
             <h2 class="element__title">Карачаевск</h2>
-            <button class="element__like-btn element__like-btn_active"></button>
+            <button class="element__like-btn" type="button"></button>
           </div>
-        </div>
-        <div class="element">
+        </article>
+        <article class="element">
           <img class="element__photo" src="./images/desertRelief-1.jpg"
             alt="Пустынные равнины. В небе летают воздущны шары">
           <div class="element__wrapper">
             <h2 class="element__title">Каппадокия</h2>
-            <button class="element__like-btn element__like-btn_active"></button>
+            <button class="element__like-btn" type="button"></button>
           </div>
-        </div>
-        <div class="element">
+        </article>
+        <article class="element">
           <img class="element__photo" src="./images/desertRelief-2.jpg" alt="Рельеф пустыни">
           <div class="element__wrapper">
             <h2 class="element__title">Селиме</h2>
-            <button class="element__like-btn element__like-btn_active"></button>
+            <button class="element__like-btn" type="button"></button>
           </div>
-        </div>
-        <div class="element">
+        </article>
+        <article class="element">
           <img class="element__photo" src="./images/snowyMountains.jpg" alt="Снежная гора Дахштайн">
           <div class="element__wrapper">
             <h2 class="element__title">Гора Дахштайн</h2>
-            <button class="element__like-btn element__like-btn_active"></button>
+            <button class="element__like-btn" type="button"></button>
           </div>
-        </div>
-        <div class="element">
+        </article>
+        <article class="element">
           <img class="element__photo" src="./images/gora.png" alt="Закат, на котором виднеется гора Эльбрус">
           <div class="element__wrapper">
             <h2 class="element__title">Гора Эльбрус</h2>
-            <button class="element__like-btn element__like-btn_active"></button>
+            <button class="element__like-btn" type="button"></button>
           </div>
-        </div>
-        <div class="element">
+        </article>
+        <article class="element">
           <img class="element__photo" src="./images/karachaevsk.jpg" alt="Лес в, котором расположено здание">
           <div class="element__wrapper">
             <h2 class="element__title">Карачаево-Черкессия</h2>
-            <button class="element__like-btn element__like-btn_active"></button>
+            <button class="element__like-btn" type="button"></button>
           </div>
-        </div>
+        </article>
       </section>
     </main>
     <footer class="footer">
@@ -78,13 +78,11 @@
   </div>
   <div class="popup">
     <div class="popup__container">
-      <button class="popup__close-btn"></button>
+      <button class="popup__close-btn" type="button"></button>
       <h3 class="popup__title">Редактировать профиль</h3>
-      <form class="popup__form" action="#">
-        <input class="popup__text popup__text_type_name" name="nameInput" type="text" placeholder="Имя"
-          value="Жак-Ив Кусто">
-        <input class="popup__text popup__text_type_job" name="jobInput" type="text" placeholder="О себе"
-          value="Исследователь океана">
+      <form class="popup__form" name="form-edit" action="#">
+        <input class="popup__text popup__text_type_name" name="nameInput" type="text" placeholder="Имя">
+        <input class="popup__text popup__text_type_job" name="jobInput" type="text" placeholder="О себе">
         <button class="popup__save-btn" type="submit">Сохранить</button>
       </form>
     </div>

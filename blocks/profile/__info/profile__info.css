@@ -6,7 +6,13 @@
   max-width: 336px;
 }
 
-@media screen and (max-width:580px) {
+@media screen and (max-width:900px) {
+  .profile__info {
+    max-width: 292px;
+  }
+}
+
+@media screen and (max-width:600px) {
   .profile__info {
     justify-content: center;
     align-items: center;
