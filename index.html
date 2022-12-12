@@ -27,57 +27,14 @@
         <button class="profile__add-btn" type="button"></button>
       </section>
       <section class="elements">
-        <article class="element">
-          <img class="element__photo" src="./images/karachaevsk.jpg" alt="Карачаевский лес, в котором виднеется здание">
-          <div class="element__wrapper">
-            <h2 class="element__title">Карачаевск</h2>
-            <button class="element__like-btn" type="button"></button>
-          </div>
-        </article>
-        <article class="element">
-          <img class="element__photo" src="./images/desertRelief-1.jpg"
-            alt="Пустынные равнины. В небе летают воздущны шары">
-          <div class="element__wrapper">
-            <h2 class="element__title">Каппадокия</h2>
-            <button class="element__like-btn" type="button"></button>
-          </div>
-        </article>
-        <article class="element">
-          <img class="element__photo" src="./images/desertRelief-2.jpg" alt="Рельеф пустыни">
-          <div class="element__wrapper">
-            <h2 class="element__title">Селиме</h2>
-            <button class="element__like-btn" type="button"></button>
-          </div>
-        </article>
-        <article class="element">
-          <img class="element__photo" src="./images/snowyMountains.jpg" alt="Снежная гора Дахштайн">
-          <div class="element__wrapper">
-            <h2 class="element__title">Гора Дахштайн</h2>
-            <button class="element__like-btn" type="button"></button>
-          </div>
-        </article>
-        <article class="element">
-          <img class="element__photo" src="./images/gora.png" alt="Закат, на котором виднеется гора Эльбрус">
-          <div class="element__wrapper">
-            <h2 class="element__title">Гора Эльбрус</h2>
-            <button class="element__like-btn" type="button"></button>
-          </div>
-        </article>
-        <article class="element">
-          <img class="element__photo" src="./images/karachaevsk.jpg" alt="Лес в, котором расположено здание">
-          <div class="element__wrapper">
-            <h2 class="element__title">Карачаево-Черкессия</h2>
-            <button class="element__like-btn" type="button"></button>
-          </div>
-        </article>
       </section>
     </main>
     <footer class="footer">
       <p class="footer__copyright">&COPY; 2022 Mesto Russia</p>
     </footer>
   </div>
-  <div class="popup">
-    <div class="popup__container">
+  <div class="popup popup_type_edit">
+    <div class="popup__container popup_type_edit">
       <button class="popup__close-btn" type="button"></button>
       <h3 class="popup__title">Редактировать профиль</h3>
       <form class="popup__form" name="form-edit" action="#">
@@ -87,6 +44,34 @@
       </form>
     </div>
   </div>
+  <div class="popup popup_type_add">
+    <div class="popup__container">
+      <button class="popup__close-btn" type="button"></button>
+      <h3 class="popup__title">Новое место</h3>
+      <form class="popup__form" name="form-add" action="#">
+        <input class="popup__text popup__text_type_title" name="titleInput" type="text" placeholder="Название">
+        <input class="popup__text popup__text_type_link" name="linkInput" type="url" placeholder="Ссылка на картинку">
+        <button class="popup__save-btn" type="submit">Создать</button>
+      </form>
+    </div>
+  </div>
+  <div class="popup popup_type_increase">
+    <div class="popup__wrapper">
+      <button class="popup__close-btn" type="button"></button>
+      <img class="popup__image">
+      <p class="popup__description"></p>
+    </div>
+  </div>
+  <template id="cards-template">
+    <article class="element">
+      <img class="element__photo">
+      <button class="element__basket"></button>
+      <div class="element__wrapper">
+        <h2 class="element__title"></h2>
+        <button class="element__like-btn" type="button"></button>
+      </div>
+    </article>
+  </template>
   <script src="./scripts/index.js"></script>
 </body>
 

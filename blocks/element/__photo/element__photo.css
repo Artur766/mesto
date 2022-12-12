@@ -6,4 +6,6 @@
   width: 282px;
   height: 282px;
   display: block;
+  color: black;
+  cursor: pointer;
 }
