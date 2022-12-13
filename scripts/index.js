@@ -10,13 +10,15 @@ const jobInput = document.querySelector(".popup__text_type_job");
 
 
 //Открытие попапа и присваивание текстовых значений профайла в инпут
-function popupOpen() {
-  popupEdit.classList.add("popup_opened");
-  nameInput.value = profileName.textContent;
-  jobInput.value = profileJob.textContent;
+function popupOpen(popup) {
+  popup.classList.add("popup_opened");
 }
 
-ButtonEdit.addEventListener("click", popupOpen);
+ButtonEdit.addEventListener("click", () => {
+  popupOpen(popupEdit);
+  nameInput.value = profileName.textContent;
+  jobInput.value = profileJob.textContent;
+});
 
 //Закрытие всех попаов
 function popupRemove(index) {
@@ -87,7 +89,7 @@ function createCards(cardData) {
   elementImage.alt = `${cardData.name}.`;
   //Увелечение картинок
   elementImage.addEventListener("click", () => {
-    popupIncrease.classList.add("popup_opened");
+    popupOpen(popupIncrease);
     popupImage.src = cardData.link;
     popupDescription.textContent = cardData.name;
   })
@@ -110,10 +112,9 @@ initialCards.forEach((cardData) => {
   renderElement(cardData);
 })
 // 2.открытие попапа на кнопку плюсик 
-function popupAddOpen() {
-  popupAdd.classList.add("popup_opened");
-}
-buttonAdd.addEventListener("click", popupAddOpen);
+buttonAdd.addEventListener("click", () => {
+  popupOpen(popupAdd);
+});
 //закрытие попапа на крестик
 popupAddClose.addEventListener("click", () => popupRemove(1));
 //3. добавление карточек
