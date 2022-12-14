@@ -1,7 +1,7 @@
 const buttonEdit = document.querySelector(".profile__edit-btn");
 const popupEditProfile = document.querySelector(".popup_type_edit");
 const popup = document.querySelectorAll(".popup");
-const popupClose = document.querySelector(".popup__close-btn");
+const buttonClosePopupEditProfile = document.querySelector(".popup__close-btn");
 const profileName = document.querySelector(".profile__name");
 const profileJob = document.querySelector(".profile__job");
 const formEditProfile = document.querySelector(".popup__form");
@@ -24,7 +24,7 @@ function removePopup(popup) {
   popup.classList.remove("popup_opened");
 }
 
-popupClose.addEventListener("click", () => removePopup(popupEditProfile));
+buttonClosePopupEditProfile.addEventListener("click", () => removePopup(popupEditProfile));
 
 //Присваивание значений инпутов к текстовым значениям профайла
 function submitEditProfileForm(evt) {
@@ -75,23 +75,23 @@ const popupAddClose = popupAddCard.querySelector(".popup__close-btn");
 const formCreateCard = popupAddCard.querySelector(".popup__form");
 const buttonAdd = document.querySelector(".profile__add-btn");
 const popupIncreaseCard = document.querySelector(".popup_type_increase");
-const ImagePopupIncrease = document.querySelector(".popup__image");
-const DescriptionPopupIncrease = document.querySelector(".popup__description");
+const imagePopupIncrease = document.querySelector(".popup__image");
+const descriptionPopupIncrease = document.querySelector(".popup__description");
 const popupIncreaseClose = popupIncreaseCard.querySelector(".popup__close-btn")
 
 function createCards(cardData) {
   const card = template.content.querySelector(".element").cloneNode(true);
   //присваивание значений с инпутов 
   card.querySelector(".element__title").textContent = cardData.name;
-  const ImageCard = card.querySelector(".element__photo");
-  ImageCard.src = cardData.link;
-  ImageCard.alt = `${cardData.name}.`;
+  const imageCard = card.querySelector(".element__photo");
+  imageCard.src = cardData.link;
+  imageCard.alt = `${cardData.name}.`;
   //Увелечение картинок
-  ImageCard.addEventListener("click", () => {
+  imageCard.addEventListener("click", () => {
     openPopup(popupIncreaseCard);
-    ImagePopupIncrease.src = cardData.link;
-    ImagePopupIncrease.alt = `${cardData.name}.`;
-    DescriptionPopupIncrease.textContent = cardData.name;
+    imagePopupIncrease.src = cardData.link;
+    imagePopupIncrease.alt = `${cardData.name}.`;
+    descriptionPopupIncrease.textContent = cardData.name;
   })
   //лайк
   card.querySelector(".element__like-btn").addEventListener("click", (evt) => {
