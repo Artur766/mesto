@@ -5,8 +5,8 @@ const buttonClosePopupEditProfile = document.querySelector(".popup__close-btn");
 const profileName = document.querySelector(".profile__name");
 const profileJob = document.querySelector(".profile__job");
 const formEditProfile = document.querySelector(".popup__form");
-const nameInputProfile = document.querySelector(".popup__text_type_name");
-const jobInputProfile = document.querySelector(".popup__text_type_job");
+const nameInputProfile = document.querySelector(".popup__input_type_name");
+const jobInputProfile = document.querySelector(".popup__input_type_job");
 
 //Открытие попапа
 function openPopup(popup) {
@@ -72,8 +72,8 @@ const initialCards = [
 ];
 const cardContainer = document.querySelector(".elements");
 const template = document.querySelector("#cards-template");
-const titleInputAddCard = document.querySelector(".popup__text_type_title");
-const linkInputAddCard = document.querySelector(".popup__text_type_link");
+const titleInputAddCard = document.querySelector(".popup__input_type_title");
+const linkInputAddCard = document.querySelector(".popup__input_type_link");
 const card = template.content.querySelector(".element");
 const popupAddCard = document.querySelector(".popup_type_add");
 const popupAddClose = popupAddCard.querySelector(".popup__close-btn");

@@ -40,12 +40,12 @@
       <button class="popup__close-btn" type="button"></button>
       <h3 class="popup__title">Редактировать профиль</h3>
       <form class="popup__form" name="form-edit" action="#" novalidate>
-        <input class="popup__input popup__text_type_name" id="user-name" value="имя" name="nameInput" type="text"
+        <input class="popup__input popup__input_type_name" id="user-name" value="имя" name="nameInput" type="text"
           placeholder="Имя" required minlength="2" maxlength="40">
-        <span class="user-name-error popup__error_visable"></span>
-        <input class="popup__input popup__text_type_job" id="job" value="о себе" name="jobInput" type="text"
+        <span class="popup__error popup__error_visable user-name-error"></span>
+        <input class="popup__input popup__input_type_job" id="job" value="о себе" name="jobInput" type="text"
           placeholder="О себе" required minlength="2" maxlength="20">
-        <span class="job-error popup__error_visable"></span>
+        <span class="popup__error popup__error_visable job-error"></span>
         <button class="popup__button popup__save-btn" type="submit">Сохранить</button>
       </form>
     </div>
@@ -55,12 +55,12 @@
       <button class="popup__close-btn" type="button"></button>
       <h3 class="popup__title">Новое место</h3>
       <form class="popup__form" name="form-add" action="#" novalidate>
-        <input class="popup__input popup__text_type_title" id="title-picture" name="titleInput" type="text"
+        <input class="popup__input popup__input_type_title" id="title-picture" name="titleInput" type="text"
           placeholder="Название" required minlength="2" maxlength="30">
-        <span class="title-picture-error popup__error_visable"></span>
-        <input class="popup__input popup__text_type_link" id="link-picture" name="linkInput" type="url"
+        <span class="popup__error popup__error_visable title-picture-error"></span>
+        <input class="popup__input popup__input_type_link" id="link-picture" name="linkInput" type="url"
           placeholder="Ссылка на картинку" required>
-        <span class="link-picture-error popup__error_visable"></span>
+        <span class="popup__error popup__error_visable link-picture-error "></span>
         <button class="popup__button popup__save-btn" type="submit">Создать</button>
       </form>
     </div>
