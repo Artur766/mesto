@@ -8,9 +8,11 @@ const formEditProfile = document.querySelector(".popup__form");
 const nameInputProfile = document.querySelector(".popup__text_type_name");
 const jobInputProfile = document.querySelector(".popup__text_type_job");
 
-//Открытие попапа и присваивание текстовых значений профайла в инпут
+//Открытие попапа
 function openPopup(popup) {
   popup.classList.add("popup_opened");
+  //Навешиваем слушатель на кнопку esc
+  document.addEventListener("keydown", closePopupEscape);
 }
 
 buttonEdit.addEventListener("click", () => {
@@ -19,12 +21,15 @@ buttonEdit.addEventListener("click", () => {
   jobInputProfile.value = profileJob.textContent;
 });
 
-//Закрытие всех попаов
+//Закрытие попапа
 function removePopup(popup) {
   popup.classList.remove("popup_opened");
+  //удаляем слушатель на кнопку esc
+  document.removeEventListener("keydown", closePopupEscape);
 }
 
-buttonClosePopupEditProfile.addEventListener("click", () => removePopup(popupEditProfile));
+buttonClosePopupEditProfile.addEventListener("click", () => removePopup(popupEditProfile)
+);
 
 //Присваивание значений инпутов к текстовым значениям профайла
 function submitEditProfileForm(evt) {
@@ -139,7 +144,41 @@ formCreateCard.addEventListener("submit", submitAddCardForm);
 //закрытие попапа с картинкой
 popupIncreaseClose.addEventListener("click", () => removePopup(popupIncreaseCard))
 
+const validationConfig = {
+  formSelector: '.popup__form',
+  inputSelector: '.popup__input',
+  submitButtonSelector: '.popup__button',
+  inactiveButtonClass: 'popup__button_disabled',
+  inputErrorClass: 'popup__input_type_error',
+  errorClass: 'popup__error_visible'
+};
 
+const form = document.querySelector(".popup__form");
+const userNameInput = document.querySelector("#user-name");
+const jobInput = document.querySelector("#job");
+const titlePictureInput = document.querySelector("#title-picture");
+const linkPictureInput = document.querySelector("#link-picture");
 
+enableValidation(validationConfig);
 
+//закрытие на оверлей
+function closePopupOverlay(evt) {
+  if (evt.target === evt.currentTarget) {
+    removePopup(evt.target);
+  }
+}
 
+//навешиваем слушателя на каждый попап
+popup.forEach((popup) => {
+  popup.addEventListener("click", closePopupOverlay);
+})
+
+//закрытие попапа на Esc
+function closePopupEscape(evt) {
+  //находим открытый попап по модификатору
+  const popupCurrent = document.querySelector(".popup_opened");
+  if (evt.key === "Escape") {
+    //удаляем открытый попап
+    removePopup(popupCurrent);
+  }
+}
