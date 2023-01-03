@@ -1,12 +1,17 @@
+//добавляем ошибку
 function showInputError(formElement, inputElement, config) {
+  //находим ошибки (инпуты)
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
 
+  //добовляем спаны 
   errorElement.classList.add(config.errorClass);
+  //добавляем дефолтно-браузерный текст ошибки
   errorElement.textContent = inputElement.validationMessage;
-
+  //добавляем инпуту красную обводку
   inputElement.classList.add(config.inputErrorClass);
 }
 
+//убираем ошибку
 function hideInputError(formElement, inputElement, config) {
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
 
@@ -15,6 +20,8 @@ function hideInputError(formElement, inputElement, config) {
   inputElement.classList.remove(config.inputErrorClass);
 }
 
+
+// функция проверяет есть ли у инпутов валидация
 function checkInputValidity(formElement, inputElement, config) {
   if (inputElement.validity.valid) {
     hideInputError(formElement, inputElement, config);
@@ -23,6 +30,7 @@ function checkInputValidity(formElement, inputElement, config) {
   }
 }
 
+//проходимся по всем инпутам, для нахождения у каждого валидности
 function hasInvalidInput(inputList) {
   return inputList.some((inputElement) => !inputElement.validity.valid);
 }
@@ -38,14 +46,16 @@ function toggleButtonState(inputList, buttonElement, config) {
   }
 }
 
-//находим инпуты у каждой формы
+//находим список инпутов у каждой формы и навешиваем обработчики на событие инпут
 function setEventListeners(formElement, config) {
-  //навешиваем обработчики на событие инпут
+  //находим инпуты
   const inputList = Array.from(formElement.querySelectorAll(config.inputSelector));
   const buttonElement = formElement.querySelector(config.submitButtonSelector);
 
-  toggleButtonState(inputList, buttonElement, config);
+  //блокируем кнопку в самом начале
 
+
+  //навешиваем обработчики событий на инпуты
   inputList.forEach((inputElement) => {
     inputElement.addEventListener("input", () => {
       checkInputValidity(formElement, inputElement, config);
@@ -57,7 +67,13 @@ function setEventListeners(formElement, config) {
 function enableValidation(config) {
   //находим каждую форму 
   const formList = Array.from(document.querySelectorAll(config.formSelector));
+  //проходимся по массиву попапов
   formList.forEach((formElement) => {
     setEventListeners(formElement, config)
   })
+}
+
+function disabledSubmitButton(formElement, config) {
+  const buttonElement = formElement.querySelector(config.submitButtonSelector);
+  buttonElement.classList.add(config.inactiveButtonClass);
 }
