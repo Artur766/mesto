@@ -52,9 +52,6 @@ function setEventListeners(formElement, config) {
   const inputList = Array.from(formElement.querySelectorAll(config.inputSelector));
   const buttonElement = formElement.querySelector(config.submitButtonSelector);
 
-  //блокируем кнопку в самом начале
-
-
   //навешиваем обработчики событий на инпуты
   inputList.forEach((inputElement) => {
     inputElement.addEventListener("input", () => {
@@ -73,7 +70,9 @@ function enableValidation(config) {
   })
 }
 
+//функция для блокировки кнопки 
 function disabledSubmitButton(formElement, config) {
   const buttonElement = formElement.querySelector(config.submitButtonSelector);
   buttonElement.classList.add(config.inactiveButtonClass);
+  buttonElement.disabled = true;
 }
