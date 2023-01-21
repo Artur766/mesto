@@ -1,5 +1,6 @@
 import Card from "./Card.js";
 import FormValidator from "./FormValidator.js";
+import { initialCards } from "./constants.js";
 
 const buttonEdit = document.querySelector(".profile__edit-btn");
 const popupEditProfile = document.querySelector(".popup_type_edit");
@@ -162,7 +163,5 @@ formCreateCard.addEventListener("submit", submitAddCardForm);
 
 //закрытие попапа с картинкой
 popupIncreaseClose.addEventListener("click", () => removePopup(popupIncreaseCard));
-
-
 
 export { openPopupIncreaseCard };

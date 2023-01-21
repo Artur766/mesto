@@ -60,6 +60,4 @@ export default class Card {
   _removeCardBasketClick() {
     this._element.remove();
   }
-
 }
-
