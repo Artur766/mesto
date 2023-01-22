@@ -1,4 +1,4 @@
-import { openPopupIncreaseCard } from "./index.js";
+import { openPopupIncreaseCard } from "./utils.js";
 
 export default class Card {
   constructor(data, templateSelector) {
@@ -18,12 +18,12 @@ export default class Card {
     this._element = this._getTemplate();
     this._setEventListeners();
 
-
+    const imageCard = this._element.querySelector(".element__photo");
 
     // Добавим данные
     this._element.querySelector(".element__title").textContent = this._name;
-    this._element.querySelector(".element__photo").src = this._link;
-    this._element.querySelector(".element__photo").alt = `${this._name}.`;
+    imageCard.src = this._link;
+    imageCard.alt = `${this._name}.`;
     // Вернём элемент наружу
     return this._element;
   }
