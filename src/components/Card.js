@@ -1,10 +1,9 @@
-import { openPopupIncreaseCard } from "./utils.js";
-
 export default class Card {
-  constructor(data, templateSelector) {
+  constructor(data, templateSelector, increasePhotoCardClick) {
     this._name = data.name;
     this._link = data.link;
     this._templateSelector = templateSelector;
+    this._increasePhotoCardClick = increasePhotoCardClick;
   }
 
   _getTemplate() {
@@ -32,7 +31,7 @@ export default class Card {
   _setEventListeners() {
     //событие увелечение картинки
     this._element.querySelector(".element__photo").addEventListener("click", () => {
-      this._increasePhotoCardClick();
+      this._increasePhotoCardClick(this._name, this._link);
     });
 
     //событие лайк
@@ -44,11 +43,6 @@ export default class Card {
     this._element.querySelector(".element__basket").addEventListener("click", () => {
       this._removeCardBasketClick();
     });
-  }
-
-  //функция увелечение картинки при клике
-  _increasePhotoCardClick() {
-    openPopupIncreaseCard(this._name, this._link)
   }
 
   //функция лайк
