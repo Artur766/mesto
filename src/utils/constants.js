@@ -34,7 +34,7 @@ export const validationConfig = {
   errorClass: 'popup__error_visible'
 };
 
-export const cardContainer = ".elements";
+export const cardContainerSelector = ".elements";
 export const buttonEdit = document.querySelector(".profile__edit-btn");
 export const buttonAdd = document.querySelector(".profile__add-btn");
 export const titleInputAddCard = document.querySelector(".popup__input_type_title");

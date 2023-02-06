@@ -4,24 +4,29 @@ import FormValidator from "../components/FormValidator.js";
 import UserInfo from "../components/UserInfo.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 import PopupWithForm from "../components/PopupWithForm.js";
-import { initialCards, validationConfig, cardContainer, buttonEdit, buttonAdd, titleInputAddCard, linkInputAddCard, formEditProfile, formCreateCard, profileName, profileJob, nameInputProfile, jobInputProfile } from "../components/constants.js";
+import { initialCards, validationConfig, buttonEdit, buttonAdd, titleInputAddCard, linkInputAddCard, formEditProfile, formCreateCard, profileName, profileJob, nameInputProfile, jobInputProfile, cardContainerSelector } from "../utils/constants.js";
 import "./index.css"
+
+function createCard(item) {
+  // Создадим экземпляр карточки
+  const card = new Card(item, "#cards-template", (name, link) => {
+    popupImage.open(name, link)
+  }
+  );
+  // Создаём карточку и возвращаем наружу
+  const cardElement = card.generateCard();
+
+  return cardElement
+}
 
 const cards = new Section({
   items: initialCards,
   renderer: (item) => {
-    // Создадим экземпляр карточки
-    const card = new Card(item, "#cards-template", (name, link) => {
-      popupImage.open(name, link)
-    }
-    );
-    // Создаём карточку и возвращаем наружу
-    const cardElement = card.generateCard();
-
+    const cardElement = createCard(item);
     cards.addItem(cardElement);
   }
 },
-  cardContainer);
+  cardContainerSelector);
 
 //динамическое добавление карточек
 cards.renderItem();
@@ -39,41 +44,32 @@ const popupImage = new PopupWithImage(".popup_type_increase");
 popupImage.setEventListeners();
 
 // форма с созданием карточки
-const popupWithFormCreateCard = new PopupWithForm(".popup_type_add", () => {
+const popupWithFormCreateCard = new PopupWithForm(".popup_type_add", (obj) => {
 
-  const cardAdd = new Section({
-    items: [{
-      name: titleInputAddCard.value,
-      link: linkInputAddCard.value
-    }],
-    renderer: (item) => {
-      // Создадим экземпляр карточки 
-      const card = new Card(item, "#cards-template", (name, link) => {
-        popupImage.open(name, link);
-      });
-      // Создаём карточку и возвращаем наружу 
-      const cardElement = card.generateCard();
+  const cardElement = createCard({
+    name: obj[titleInputAddCard.name],
+    link: obj[linkInputAddCard.name]
+  });
 
-      document.querySelector(".elements").prepend(cardElement)
-    }
-  },
-    cardContainer);
-  cardAdd.renderItem();
+  cards.addItem(cardElement);
 });
 popupWithFormCreateCard.setEventListeners();
 
 //форма с профилем
-const popupWithFormProfile = new PopupWithForm(".popup_type_edit", () => {
-  const dataInput = {
-    name: nameInputProfile.value,
-    activity: jobInputProfile.value
-  }
-  userInfo.setUserInfo(dataInput);
+const popupWithFormProfile = new PopupWithForm(".popup_type_edit", (obj) => {
+
+  userInfo.setUserInfo({
+    name: obj[nameInputProfile.name],
+    activity: obj[jobInputProfile.name]
+  });
+
 });
 popupWithFormProfile.setEventListeners();
 
-
-const userInfo = new UserInfo({ name: profileName, activity: profileJob });
+const userInfo = new UserInfo({
+  name: profileName,
+  activity: profileJob
+});
 //открытие попапа профиль 
 buttonEdit.addEventListener("click", () => {
   popupWithFormProfile.open();

@@ -4,25 +4,20 @@ export default class Card {
     this._link = data.link;
     this._templateSelector = templateSelector;
     this._increasePhotoCardClick = increasePhotoCardClick;
-  }
-
-  _getTemplate() {
-    const card = document.querySelector(this._templateSelector).content.querySelector(".element").cloneNode(true);
-    return card;
+    this._element = document.querySelector(this._templateSelector).content.querySelector(".element").cloneNode(true);
+    this._likeButton = this._element.querySelector(".element__like-btn");
+    this._cardImage = this._element.querySelector(".element__photo");
   }
 
   generateCard() {
     // Запишем разметку в приватное поле _element. 
     // Так у других элементов появится доступ к ней.
-    this._element = this._getTemplate();
     this._setEventListeners();
-
-    const imageCard = this._element.querySelector(".element__photo");
 
     // Добавим данные
     this._element.querySelector(".element__title").textContent = this._name;
-    imageCard.src = this._link;
-    imageCard.alt = `${this._name}.`;
+    this._cardImage.src = this._link;
+    this._cardImage.alt = `${this._name}.`;
     // Вернём элемент наружу
     return this._element;
   }
@@ -30,28 +25,28 @@ export default class Card {
   // добавление всех слушателей на карточку
   _setEventListeners() {
     //событие увелечение картинки
-    this._element.querySelector(".element__photo").addEventListener("click", () => {
+    this._cardImage.addEventListener("click", () => {
       this._increasePhotoCardClick(this._name, this._link);
     });
 
     //событие лайк
-    this._element.querySelector(".element__like-btn").addEventListener("click", () => {
-      this._addLikeClick();
+    this._likeButton.addEventListener("click", () => {
+      this._toggleLike();
     });
 
     //событие удаление карточки 
     this._element.querySelector(".element__basket").addEventListener("click", () => {
-      this._removeCardBasketClick();
+      this._removeCard();
     });
   }
 
   //функция лайк
-  _addLikeClick() {
-    this._element.querySelector(".element__like-btn").classList.toggle("element__like-btn_active");
+  _toggleLike() {
+    this._likeButton.classList.toggle("element__like-btn_active");
   }
 
   //функция удаление карточки
-  _removeCardBasketClick() {
+  _removeCard() {
     this._element.remove();
   }
 }
