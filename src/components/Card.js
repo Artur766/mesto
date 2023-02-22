@@ -24,11 +24,6 @@ export default class Card {
 
   //метод проверяет id текущего пользователя и id лайкнувших эту карточку 
   _isLikeCurrUser() {
-    // this._likes.forEach((item) => {
-    //   if (item._id === this._currentUserId) {
-    //     return true;
-    //   }
-    // })
     for (let index = 0; index < this._likes.length; index++) {
       if (this._likes[index]._id === this._currentUserId) {
         return true
