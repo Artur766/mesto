@@ -4,42 +4,35 @@ export default class Api {
     this.baseUrl = config.baseUrl;
   }
 
+  _handleResponse(res) {
+    if (res.ok) {
+      return res.json(); // читает ответ с сервера и возвращает промис
+    }
+    return Promise.reject(new Error("Произошла ошибка"))
+  }
+
+
   createCard(data) {
     return fetch(`${this.baseUrl}/cards`, {
       method: "POST",
       headers: this.headers,
       body: JSON.stringify(data)
     })
-      .then((res) => {
-        if (res.ok) {
-          return res.json(); // читает ответ с сервера и возвращает промис
-        }
-        return Promise.reject(new Error("Произошла ошибка"))
-      })
+      .then(this._handleResponse)
   }
 
   getInitialCards() {
     return fetch(`${this.baseUrl}/cards`, {
       headers: this.headers,
     })
-      .then((res) => {
-        if (res.ok) {
-          return res.json(); // читает ответ с сервера и возвращает промис
-        }
-        return Promise.reject(new Error("Произошла ошибка"))
-      })
+      .then(this._handleResponse)
   }
 
   getUserInformation() {
     return fetch(`${this.baseUrl}/users/me`, {
       headers: this.headers,
     })
-      .then((res) => {
-        if (res.ok) {
-          return res.json(); // читает ответ с сервера и возвращает промис
-        }
-        return Promise.reject(new Error("Произошла ошибка"))
-      })
+      .then(this._handleResponse)
   }
 
   updatingUserData(data) {
@@ -48,12 +41,7 @@ export default class Api {
       headers: this.headers,
       body: JSON.stringify(data)
     })
-      .then((res) => {
-        if (res.ok) {
-          return res.json(); // читает ответ с сервера и возвращает промис
-        }
-        return Promise.reject(new Error("Произошла ошибка"))
-      })
+      .then(this._handleResponse)
   }
 
   changeAvatar(dataUrl) {
@@ -62,12 +50,7 @@ export default class Api {
       headers: this.headers,
       body: JSON.stringify(dataUrl)
     })
-      .then((res) => {
-        if (res.ok) {
-          return res.json(); // читает ответ с сервера и возвращает промис
-        }
-        return Promise.reject(new Error("Произошла ошибка"))
-      })
+      .then(this._handleResponse)
   }
 
   deleteCard(idCard) {
@@ -75,9 +58,7 @@ export default class Api {
       method: "DELETE",
       headers: this.headers
     })
-      .then((res) => {
-        return res.json();
-      });
+      .then(this._handleResponse);
   }
 
   putLike(idCard) {
@@ -85,9 +66,7 @@ export default class Api {
       method: "PUT",
       headers: this.headers
     })
-      .then((res) => {
-        return res.json();
-      });
+      .then(this._handleResponse);
   }
 
   removeLike(idCard) {
@@ -95,9 +74,7 @@ export default class Api {
       method: "DELETE",
       headers: this.headers
     })
-      .then((res) => {
-        return res.json();
-      });
+      .then(this._handleResponse);
   }
 }
 

@@ -42,8 +42,6 @@ export default class PopupWithForm extends Popup {
       evt.preventDefault();//отменяем стандартное действие при сабмите
 
       this._handleFormSubmit(this._getInputValues());
-
-      this.close();//закрываем попап при сабмите
     });
   }
 }

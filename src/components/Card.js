@@ -75,24 +75,28 @@ export default class Card {
     });
   }
 
-  //метод изменяет количество лайкаов
+  //метод изменяет количество лайков
   changingNumberLikes(data) {
     this._numberLikes.textContent = data.likes.length;
+    if (this._likeButton.classList.contains("element__like-btn_active")) {
+      this._likeButton.classList.remove("element__like-btn_active");
+    } else {
+      this._likeButton.classList.add("element__like-btn_active");
+    }
   }
 
   //функция лайк
   _toggleLike() {
     if (this._likeButton.classList.contains("element__like-btn_active")) {
       this._removeLike();
-      this._likeButton.classList.remove("element__like-btn_active");
     } else {
       this._addLike();
-      this._likeButton.classList.add("element__like-btn_active");
     }
   }
 
   //функция удаление карточки
   removeCard() {
     this._element.remove();
+    this._element = null;
   }
 }

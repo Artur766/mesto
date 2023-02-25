@@ -31,6 +31,9 @@ Promise.all(promises)
     currentUserId = data[1]._id;
     //рендерим массив карточек
     cards.renderItem(data[0]);
+  })
+  .catch((err) => {
+    console.log(err);
   });
 
 function createCard(dataCard) {
@@ -56,10 +59,16 @@ function createCard(dataCard) {
       .then((data) => {
         card.changingNumberLikes(data)
       })
+      .catch((err) => {
+        console.log(err);
+      })
   }, () => {//запрос для удаления количества лайка
     api.removeLike(dataCard._id)
       .then((data) => {
         card.changingNumberLikes(data);
+      })
+      .catch((err) => {
+        console.log(err);
       })
   }
   );
@@ -86,6 +95,7 @@ const popupWithFormCreateCard = new PopupWithForm(".popup_type_add", (dataInput)
   })
     .then((dataCard) => {
       cards.addItem(dataCard);
+      popupWithFormCreateCard.close();
     })
     .catch((err) => {
       console.log(err);
@@ -108,7 +118,7 @@ const popupWithFormProfile = new PopupWithForm(".popup_type_edit", (dataInput) =
   })
     .then((dataUser) => {
       userInfo.setUserInfo(dataUser);
-
+      popupWithFormProfile.close();
     })
     .catch((err) => {
       console.log(err);
@@ -130,6 +140,7 @@ const popupWithFormAvatar = new PopupWithForm(".popup_type_avatar", (dataInput) 
   })
     .then((dataLinkAvatar) => {
       userInfo.setUserInfo(dataLinkAvatar);
+      popupWithFormAvatar.close();
     })
     .catch((err) => {
       console.log(err);
